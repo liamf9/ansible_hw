@@ -1,0 +1,48 @@
+---
+- name: allow 21
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 21
+    protocol: tcp
+    jump: ACCEPT
+- name: allow 22
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 22
+    protocol: tcp
+    jump: ACCEPT
+- name: allow 53
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 53
+    protocol: tcp
+    jump: ACCEPT
+- name: allow 123
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 123
+    protocol: tcp
+    jump: ACCEPT
+- name: allow 53 udp
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 53
+    protocol: udp
+    jump: ACCEPT
+- name: drop tcp
+  iptables:
+    action: append
+    chain: INPUT
+    protocol: tcp
+    jump: DROP
+- name: drop udp
+  iptables:
+    action: append
+    chain: INPUT
+    protocol: udp
+    jump: DROP

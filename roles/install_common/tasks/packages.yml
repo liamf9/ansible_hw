@@ -1,0 +1,11 @@
+---
+- name: Install COMMON (All)
+  package:
+    name: "{{ item }}"
+    state: latest
+  tags: packages
+  with_items:
+    - 'mtr'
+    - 'tcpdump'
+    - 'nano'
+    - 'cowsay'

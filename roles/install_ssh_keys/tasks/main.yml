@@ -1,0 +1,9 @@
+---
+- name: Install SSH Keys
+  authorized_key:
+    user: manager
+    state: present
+    exclusive: True
+    key: "{{ item }}"
+  with_file:
+    - manager.pub

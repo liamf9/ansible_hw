@@ -1,0 +1,16 @@
+---
+- name: allow 80
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 80
+    protocol: tcp
+    jump: ACCEPT
+- name: allow 443
+  iptables:
+    action: insert
+    chain: INPUT
+    destination_port: 443
+    protocol: tcp
+    jump: ACCEPT
+

@@ -1,0 +1,40 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  vars:
+    ansible_ssh_user: manager
+    ansible_ssh_private_key_file: ./keys/manager
+    ansible_become_pass: mypasswd
+  roles:
+    - role: iptables_all
+
+- hosts: centos
+  become: yes
+  become_user: root
+  vars:
+    ansible_ssh_user: manager
+    ansible_ssh_private_key_file: ./keys/manager
+    ansible_become_pass: mypasswd
+  tasks:
+    - command: systemctl stop firewalld    
+
+- hosts: centos_a
+  become: yes
+  become_user: root
+  vars:
+    ansible_ssh_user: manager
+    ansible_ssh_private_key_file: ./keys/manager
+    ansible_become_pass: mypasswd
+  roles:
+    - role: iptables_centos_a
+
+- hosts: centos_b
+  become: yes
+  become_user: root
+  vars:
+    ansible_ssh_user: manager
+    ansible_ssh_private_key_file: ./keys/manager
+    ansible_become_pass: mypasswd
+  roles:
+    - role: iptables_centos_b

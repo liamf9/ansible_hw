@@ -1,0 +1,23 @@
+---
+- hosts: debian
+  become: yes
+  vars:
+    ansible_ssh_user: student
+    ansible_ssh_pass: mypasswd
+    ansible_become_user: root
+    ansible_become_pass: mypasswd
+  roles:
+    - role: create_user_debian
+    - role: install_ssh_keys
+    - role: edit_resolv
+    - role: install_common
+
+- hosts: centos
+  vars:
+    ansible_ssh_user: root
+    ansible_ssh_pass: mypasswd
+  roles:
+    - role: create_user_centos
+    - role: install_ssh_keys
+    - role: edit_resolv
+    - role: install_common      

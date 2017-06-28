@@ -1,0 +1,11 @@
+---
+- name: Install User (Debian)
+  user:
+    name: manager
+    groups: sudo
+    append: yes
+    state: present
+    shell: /bin/bash
+    ssh_key_file: ~/.ssh/authorized_keys
+    password: "{{ 'mypasswd' | password_hash('sha512') }}"
+  tags: users

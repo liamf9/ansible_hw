@@ -1,0 +1,10 @@
+---
+- name: Install User (CentOS)
+  user:
+    name: manager
+    groups: wheel
+    append: yes
+    state: present
+    shell: /bin/bash
+    password: "{{ 'mypasswd' | password_hash('sha512') }}"
+  tags: users
